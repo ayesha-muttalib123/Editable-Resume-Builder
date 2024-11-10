@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Editable Resume Builder</title>
+    <title>Shareble Resume Builder</title>
     <link rel="stylesheet" href="index.css">
+    <!-- Include html2canvas from CDN -->
+<!-- Include html2canvas from CDN -->
+<!-- Include html2canvas (required by html2pdf) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+<!-- Include html2pdf.js (which internally depends on html2canvas) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+
+
+
+<!-- Your script file that calls downloadCV -->
+
+
 </head>
 <body>
     <div class="form-container">
@@ -12,6 +26,8 @@
         <form id="resume-form" onsubmit="">
             <fieldset>
                 <legend>Personal Information</legend>
+                <label for="username">username</label>
+                <input type="text" id="username" name="username" required><br>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <label for="email">Email:</label>
@@ -38,16 +54,37 @@
                 <textarea id="skills" placeholder="Enter Your Skills" rows="4" name="skills" required></textarea><br>
             </fieldset>
             <button type="submit">Generate Resume</button>
+      
         </form>
+      
      
     </div>
     <br>
     <!-- Editable Resume Builder  -->
 
     <div id="resume-display" contenteditable="true" class="resume">
-   
+        
+       
+
+    </div>
+    <div id="download-cv">
+        <button>Download CV as PDF</button>
+    </div>
+    <div id="share-link">
+        <button>Generate Shareable Link</button>
     </div>
 
-    <script src="app.js"></script>
+    <div id="shareable-url" style="display: none;">
+        <p>Your shareable link: <span id="generated-url"></span></p>
+    </div>
+    
+
+    <script src="app.js">
+
+
+
+
+
+    </script>
 </body>
 </html>
