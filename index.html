@@ -21,45 +21,145 @@
 
 </head>
 <body>
+   
     <div class="form-container">
         <h1>Resume Builder Form</h1>
-        <form id="resume-form" onsubmit="">
+        <form id="resume-form">
             <fieldset>
                 <legend>Personal Information</legend>
-                <label for="username">username</label>
-                <input type="text" id="username" name="username" required><br>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
+                <label for="role">Role:</label>
+                <input type="text" id="role" name="role"><br>
+                
+                <label for="intro">Profile:</label>
+                <input type="text" id="intro" name="intro"><br>
+                
+    
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required><br>
-                <label for="phone">Phone</label>
+    
+                <label for="phone">Phone:</label>
                 <input type="text" id="phone" name="phone"><br>
-                <label for="profile-image">Profile Image</label>
+    
+                <label for="profile-image">Profile Image:</label>
                 <input type="file" id="profile-image" name="profile-image" accept="image/*"><br>
- 
-            </fieldset>
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location "><br>
+                
 
-            <fieldset>
+
+
+
+             
+
+                <label for="linkedin">LinkedIn:</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="e.g., https://linkedin.com">
+                <label for="link">Github</label>
+                <input id="github" type="url" name="github-link" placeholder="e.g., https://Github.com"><br>
+                <label for="skills">Skills</label>
+                <textarea id="skills" name="skills" rows="4" placeholder="List your skills here..."></textarea><br>
+                
+
+            </fieldset>
+    
+            <fieldset id="education-section">
                 <legend>Education</legend>
-                <label for="education">Education:</label>
-                <textarea id="education"  placeholder=" Enter Your Education" required rows="4"></textarea><br>
+                <div class="education-entry">
+                    <label for="degree">Degree:</label>
+                    <input type="text" name="degree" placeholder="e.g., B.Sc. Computer Science" required><br>
+    
+                    <label for="institution">Institution:</label>
+                    <input type="text" name="institution" placeholder="e.g., Stanford University" required><br>
+    
+                    <label for="education-start-date">Start Date:</label>
+                    <input type="date" name="education-start-date" required><br>
+    
+                    <label for="education-end-date">End Date:</label>
+                    <input type="date" name="education-end-date"><br>
+    
+                    <label for="education-location">Location:</label>
+                    <select name="education-location" required>
+                        <option value="">Select Location</option>
+                        <option value="usa">USA</option>
+                        <option value="uk">UK</option>
+                        <option value="canada">Canada</option>
+                        <option value="india">India</option>
+                        <option value="australia">Australia</option>
+                    </select><br>
+                </div>
             </fieldset>
-
-            <fieldset>
+            <button type="button" onclick="addSection('education')">Add More Education</button>
+    
+            <fieldset id="work-experience-section">
                 <legend>Work Experience</legend>
-                <label for="work">Work Experience:</label>
-                <textarea id="work" placeholder="Enter Your Experience" rows="4" name="work" required></textarea><br>
+                <div class="work-experience-entry">
+                    <label for="job-title">Job Title:</label>
+                    <input type="text" name="job-title" placeholder="e.g., Software Engineer" required><br>
+    
+                    <label for="company-name">Company Name:</label>
+                    <input type="text" name="company-name" placeholder="e.g., Google" required><br>
+    
+                    <label for="work-start-date">Start Date:</label>
+                    <input type="date" name="work-start-date" required><br>
+    
+                    <label for="work-end-date">End Date:</label>
+                    <input type="date" name="work-end-date"><br>
+    
+                    <label for="work-location">Location:</label>
+                    <select name="work-location" required>
+                        <option value="">Select Location</option>
+                        <option value="usa">USA</option>
+                        <option value="uk">UK</option>
+                        <option value="canada">Canada</option>
+                        <option value="india">India</option>
+                        <option value="australia">Australia</option>
+                    </select><br>
+                </div>
             </fieldset>
-
-            <fieldset>
-                <legend>Skills</legend>
-                <label for="skills">Skills:</label>
-                <textarea id="skills" placeholder="Enter Your Skills" rows="4" name="skills" required></textarea><br>
+            <button type="button" onclick="addSection('work-experience')">Add More Work Experience</button>
+    
+            <fieldset id="projects-section">
+                <legend>Projects</legend>
+                <div class="project-entry">
+                    <label for="project-name">Project Name:</label>
+                    <input type="text" name="project-name" placeholder="e.g., Portfolio Website" required><br>
+    
+                    <label for="project-description">Description:</label>
+                    <textarea name="project-description" placeholder="Briefly describe the project" rows="4" required></textarea><br>
+    
+                    <label for="project-link">Project Link:</label>
+                    <input type="url" name="project-link" placeholder="e.g., https://github.com/username/project"><br>
+                </div>
             </fieldset>
-            <button type="submit">Generate Resume</button>
-      
+            <button type="button" onclick="addSection('projects')">Add More Projects</button>
+    
+            <fieldset id="certifications-section">
+                <legend>Certifications</legend>
+                <div class="certification-entry">
+                    <label for="certification-name">Certification Name:</label>
+                    <input type="text" name="certification-name" placeholder="e.g., AWS Certified Developer" required><br>
+    
+                    <label for="certification-issuer">Issuing Organization:</label>
+                    <input type="text" name="certification-issuer" placeholder="e.g., Amazon" required><br>
+    
+                    <label for="certification-date">Date Issued:</label>
+                    <input type="date" name="certification-date" required><br>
+                </div>
+            </fieldset>
+            <button type="button" onclick="addSection('certifications')">Add More Certifications</button>
+    
+            <div class="button-container">
+                <button type="submit">Generate Resume</button>
+            </div>
         </form>
-      
+    
+        <div id="resume-display"></div>
+    
+        <script src="script.js"></script>
+    
+    </body>
+        
      
     </div>
     <br>
